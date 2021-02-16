@@ -1,64 +1,108 @@
+import React, { useState } from "react";
+import {
+  Field,
+  Input,
+  InputGroup,
+  Label,
+  
+  Radio,
+} from "@zendeskgarden/react-forms";
+import { Button } from "@zendeskgarden/react-buttons";
+import { Dropdown, Trigger, Menu, Item } from "@zendeskgarden/react-dropdowns";
+import { IoIosArrowDown } from "react-icons/Io";
+import { Datepicker } from '@zendeskgarden/react-datepickers';
+
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+
+  
+  const [selectedItem, setSelectedItem] = useState("PAN");
+  const [isOpen, setIsOpen] = useState(false);  
+  const [radioValue, setRadioValue] = useState("PAN"); 
+  const [state, setState] = useState(new Date());
+ 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} >
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Cydez Technologies
+</title>
+      
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+        Admin Utility
         </h1>
+        <h2>  SEARCH ClIENT DETAILS </h2>
+        
+<div>
+<form className="w-full  max-w-lg ">
+<div className="text-xs">Do you already have a will & more customer id?</div>
+<div className="inline-flex ">
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+<Field>
+  <Radio
+  name="default example"
+          value="yes"
+          checked={radioValue === "yes"}
+          onChange={(event) => setRadioValue(event.target.value)}
+        >
+          <Label>Yes</Label>
+  </Radio>
+  </Field>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+  <Field>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+  <Radio
+          name="default example"
+          value="No"
+          checked={radioValue === "No"}
+          onChange={(event) => setRadioValue(event.target.value)}
+        >
+          <Label>No</Label>
+        </Radio>
+</Field>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+</div>
+<h3>Details of deceased</h3>
+<div className=""> 
+  <Field>
+  <label>Client id(it in possession)</label>
+        <Input />
+  </Field>
+</div>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+  <div >
+    <Field>
+    <Label>Firstname</Label>
+        <Input/>
+        <Label>Middlename</Label>
+        <Input/>
+        <Label>Surname</Label>
+        <Input/>
+     </Field>   
+    </div>
+
+    <div>
+    <Field>
+          <Label>Select a date</Label>
+            <Input placeholder="00/00/0000"  />
+       
+     </Field>
+
+     
+      </div>
+      
+    </form>
+    <Button >Save & Next</Button>
+
         </div>
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
+       
       </footer>
     </div>
   )
