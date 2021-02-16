@@ -75,6 +75,7 @@ export default function Home() {
 </div>
 
   <div >
+    
     <Field>
     <Label>Firstname</Label>
         <Input/>
@@ -85,18 +86,49 @@ export default function Home() {
      </Field>   
     </div>
 
-    <div>
+    <div >
     <Field>
           <Label>Select a date</Label>
             <Input placeholder="00/00/0000"  />
        
      </Field>
+<Field>
+  
+<Dropdown
+        isOpen={isOpen}
+        selectedItem={selectedItem}
+        onSelect={(item) => setSelectedItem(item)}
+        onStateChange={(state) => {
+          if (state.isOpen !== undefined) {
+            setIsOpen(state.isOpen);
+          }
+        }}
+      >
+        <Trigger>
+          <InputGroup>
+            <Button focusInset>
+              {selectedItem}
+              <Button.EndIcon isRotated={isOpen} IoIosArrowDown>
+             
+            <Input placeholder="0000 1234 5678"/>
+               
+              </Button.EndIcon>
+            </Button>
+          </InputGroup>
+        </Trigger>
 
+        <Menu>
+          <Item value="AadhaarNO">Aadhaarno</Item>
+          <Item value="Passport">Passport</Item>
+          <Item value="PAN">PAN</Item>
+        </Menu>
+      </Dropdown>
+</Field>
      
       </div>
       
     </form>
-    <Button >Save & Next</Button>
+    <Button isPrimary size="small">Save & Next</Button>
 
         </div>
       </main>

@@ -21,7 +21,9 @@
 text-align: center;
 
 }
-
+.Button{
+  align-items: center;
+}
 
 
 .footer {
